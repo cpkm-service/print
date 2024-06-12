@@ -1,0 +1,24 @@
+{
+    "name": "cpkm/print",
+    "autoload": {
+        "psr-4": {
+            "Cpkm\\Print\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Cpkm\\Print\\PrintServiceProvider"
+            ]
+        }
+    },
+    "authors": [
+        {
+            "name": "Henry",
+            "email": "asdcxz179@gmail.com"
+        }
+    ],
+    "require": {
+        "Cpkm/Admin": "*"
+    }
+}
