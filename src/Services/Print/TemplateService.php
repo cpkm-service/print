@@ -1,6 +1,6 @@
 <?php
 
-namespace Cpkm\Print\Services;
+namespace Cpkm\Print\Services\Print;
 
 use Illuminate\Support\Arr;
 use App\Exceptions\ErrorException;
@@ -43,6 +43,16 @@ class TemplateService
 
     public function getPrintTemplate($id) {
         return $this->PrintTemplateRepository->getDetail($id);
+    }
+    
+    /**
+     * 模板代號取得模板資料
+     *
+     * @param  mixed $code
+     * @return void
+     */
+    public function getPrintTemplateByCode(string $code) {
+        return $this->PrintTemplateRepository->where('code', $code)->first();
     }
 
     /**

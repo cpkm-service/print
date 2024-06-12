@@ -27,10 +27,10 @@ return [
         ],
         'fields'    =>  [
             'content'   =>  [
-                'tag'           =>  'ckeditor5',
+                'tag'           =>  'ckeditor-print',
                 'name'          =>  'content',
-                'text'          =>  'backend.print_templates.content',
-                'placeholder'   =>  'backend.print_templates.content',
+                'text'          =>  'print::backend.print_templates.content',
+                'placeholder'   =>  'print::backend.print_templates.content',
                 'required'      =>  true,
                 'rules' =>  [
 

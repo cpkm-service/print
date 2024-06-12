@@ -43,12 +43,12 @@
             {
                 data: "name",
                 className: "text-md-center fw-semibold",
-                title: "{{__('backend.print_templates.name')}}"
+                title: "{{__('print::backend.print_templates.name')}}"
             },
             {
                 data: "code",
                 className: "text-md-center fw-semibold",
-                title: "{{__('backend.print_templates.code')}}"
+                title: "{{__('print::backend.print_templates.code')}}"
             },
             {
                 data: "id",

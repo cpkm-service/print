@@ -1,20 +1,4 @@
 @extends('backend.layouts.main')
-@section('options')
-    @if(($show??false))
-    <div class="row mb-2">
-        <div class="col-12">
-            <button class="btn @if($detail->status?->id == 1) btn-warning @elseif($detail->status?->id == 2) btn-primary @else btn-danger @endif" type="button" id="close" data-id="{{$detail->id}}">{{$detail->status->name}}</button>
-            @if($detail->status?->id == 1 && !$detail->contract_order)
-                <a href="{{route('backend.lease.contract_order.create', ['sourceable_type' => \App\Models\LeaseQuoteOrder::class, 'sourceable_id' => $detail->id])}}" class="btn btn-success">轉租賃合約</a>
-            @else
-                @if($detail->contract_order)
-                <a href="{{route('backend.lease.contract_order.show', ['contract_order' => $detail->contract_order->id])}}" class="btn btn-info" target="_blank">租賃合約單</a>
-                @endif
-            @endif
-        </div>
-    </div>
-    @endif
-@endsection
 @section('content')
 <main id="main-container">
 <!-- Page Content -->
@@ -55,7 +39,6 @@
 </main>
 @endsection
 @push('style')
-<link rel="stylesheet" href="/css/order.css">
 <style>
     #btabs-static-home th,#btabs-static-home td {
         white-space:nowrap;
@@ -64,7 +47,4 @@
         --bs-accordion-bg: #ffffff;
     }
 </style>
-@endpush
-@push('javascript')
-<script src="{{asset(Universal::version('js/rate.js'))}}"></script>
 @endpush

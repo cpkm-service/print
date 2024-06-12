@@ -23,5 +23,7 @@ Route::middleware(['backend'])
             ->group(function () {
                 /* 列印模板 */
                 Route::resource('template', 'Print\TemplateController');
+                /* 測試列印 */
+                Route::get('demo/{id}', 'Print\TemplateController@print')->name('demo');
             });
     });

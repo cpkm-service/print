@@ -16,4 +16,4 @@
     ```
 3. `composer require cpkm-service/print`
 4. `php artisan migrate`
-
+5. `php artisan vendor:publish --tag="print-public"`

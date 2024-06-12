@@ -1,6 +1,6 @@
 <?php
 
-namespace Cpkm\Print\Http\Controllers\Backend;
+namespace Cpkm\Print\Http\Controllers\Backend\Print;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -30,7 +30,7 @@ class TemplateController extends Controller
                 "data"  =>  $this->TemplateService->index(request()->extraParam??[]),
             ]);
         }
-        return view('backend.print.template.index');
+        return view('print::backend.template.index');
     }
 
     /**
@@ -54,7 +54,20 @@ class TemplateController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $data['detail'] = $this->TemplateService->getPrintTemplate($id);
+        $this->form['title']    =   '模板詳情';
+        $this->show = true;
+        foreach($data['detail']->toArray() as $field => $detail) {
+            if(isset($this->fields[$field])) {
+                $this->fields[$field]['value']  =   $detail;
+                $this->fields[$field]['disabled']  =   true;
+            }
+        }
+        $data['form']   =   $this->form;
+        \View::share('fields',$this->fields);
+        $data['table']  =   'print_templates';
+        $data['show']   =   $this->show;
+        return view('print::backend.template.form',$data);
     }
 
     /**
@@ -73,7 +86,7 @@ class TemplateController extends Controller
         }
         $data['form']   =   $this->form;
         \View::share('fields',$this->fields);
-        return view('backend.print.template.form',$data);
+        return view('print::backend.template.form',$data);
     }
 
     /**
@@ -91,5 +104,14 @@ class TemplateController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function print(string $id)
+    {
+        $data['template'] = $this->TemplateService->getPrintTemplate($id);
+        return view('print::backend.template.print',$data);
     }
 }

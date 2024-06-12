@@ -1,6 +1,6 @@
 <?php
 
-namespace Cpkm\Lease;
+namespace Cpkm\Print;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Routing\Router;
@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\App;
 use Illuminate\Contracts\Events\Dispatcher;
 use Illuminate\Support\Facades\Blade;
 
-class LeaseServiceProvider extends ServiceProvider
+class PrintServiceProvider extends ServiceProvider
 {
     protected $events = [
     ];
@@ -44,8 +44,11 @@ class LeaseServiceProvider extends ServiceProvider
             __DIR__.'/../database/migrations' => database_path('migrations'),
         ], 'print-migrations');
 
+        $this->publishes([
+            __DIR__.'/../public' => public_path(),
+        ], 'print-public');
         
-        // Blade::componentNamespace('Cpkm\\Excel\\View\\Components\\Backend', 'backend');
+        Blade::componentNamespace('Cpkm\\Print\\View\\Components\\Backend', 'print');
     }
 
     /**
